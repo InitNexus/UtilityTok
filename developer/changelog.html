@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="midnight">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Changelog</title>
+<link rel="icon" type="image/png" href="https://initnexus.github.io/Core/media/branding/logo.png">
+<link id="nb-theme-stylesheet" rel="stylesheet" href="https://initnexus.github.io/Core/styling/themes/midnight.css">
+<link rel="stylesheet" href="https://initnexus.github.io/Core/styling/core.css">
+<style>
+.changelog-body {
+  margin: var(--spacing-3);
+  padding: var(--spacing-3);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+}
+
+.changelog-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+  padding: var(--spacing-3) var(--spacing-4);
+  border-radius: 10px;
+  background-color: var(--color-surface-raised);
+}
+
+.changelog-bar-title {
+  font-weight: bold;
+}
+
+.changelog-entries {
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--spacing-4);
+}
+
+.changelog-entry {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+  padding: var(--spacing-2) var(--spacing-2);
+}
+
+.changelog-entry-timestamp {
+  flex-shrink: 0;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  white-space: nowrap;
+}
+
+.changelog-entry-text {
+  font-size: var(--text-sm);
+}
+
+@media (max-width: 640px) {
+  .changelog-body {
+    margin: var(--spacing-2);
+    padding: var(--spacing-2);
+  }
+
+  .changelog-bar {
+    padding: var(--spacing-2) var(--spacing-3);
+  }
+
+  .changelog-entry {
+    flex-direction: column;
+    gap: var(--spacing-1);
+  }
+}
+</style>
+</head>
+<body class="flex flex-col min-h-dvh">
+
+<div class="changelog-body flex-1 flex flex-col">
+
+  <div class="changelog-bar">
+    <span class="changelog-bar-title">Changelog</span>
+    <button class="btn btn-secondary btn-sm" id="changelog-export-btn">Export</button>
+  </div>
+
+  <div class="changelog-entries" id="changelog-entries">
+
+    <div class="changelog-entry">
+      <span class="changelog-entry-timestamp">[30/06/2026 | 14:26:05PM]</span>
+      <span class="changelog-entry-text">&nbsp;Changelog page created</span>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="https://initnexus.github.io/Core/scripts/core.js"></script>
+<script>
+document.getElementById('changelog-export-btn').addEventListener('click', function () {
+  var entries = document.querySelectorAll('#changelog-entries .changelog-entry');
+  var lines = [];
+  entries.forEach(function (entry) {
+    var timestamp = entry.querySelector('.changelog-entry-timestamp').textContent.trim();
+    var text = entry.querySelector('.changelog-entry-text').textContent.trim();
+    lines.push(timestamp + ' ' + text);
+  });
+
+  var now = new Date();
+  var pad = function (n) { return String(n).padStart(2, '0'); };
+  var stamp = now.getFullYear() + pad(now.getMonth() + 1) + pad(now.getDate()) + '-' + pad(now.getHours()) + pad(now.getMinutes()) + pad(now.getSeconds());
+
+  var blob = new Blob([lines.join('\n')], { type: 'text/plain' });
+  var url = URL.createObjectURL(blob);
+  var link = document.createElement('a');
+  link.href = url;
+  link.download = 'UtilityTok-Changelog-' + stamp + '.txt';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+});
+</script>
+
+</body>
+</html>
