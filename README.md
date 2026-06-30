@@ -19,7 +19,7 @@ ANALYSIS
 - Advanced Analysis ```Gather profile, account, authorization, domain, general statistics, advanced analytics and miscellaneous information```
 
 INFORMATION LOOKUP
-- Authorization Information ```View is an account has the following tied to it: email address, phone number, password, passkey & OAuth / third party platform```
+- Authorization Information ```View if an account has the following tied to it: email address, phone number, password, passkey & OAuth / third party platform```
 - Domain Information ```View the email address domain and phone number area code tied to an account```
 
 VIEWER
