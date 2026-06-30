@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="midnight">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Up</title>
+<link rel="icon" type="image/png" href="https://initnexus.github.io/Core/media/branding/logo.png">
+<link id="nb-theme-stylesheet" rel="stylesheet" href="https://initnexus.github.io/Core/styling/themes/midnight.css">
+<link rel="stylesheet" href="https://initnexus.github.io/Core/styling/core.css">
+<style>
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+*:focus {
+  outline: none;
+}
+
+.signup-container {
+  width: 100%;
+  max-width: 460px;
+}
+</style>
+</head>
+<body class="flex flex-col min-h-dvh">
+
+<main class="flex-1 flex items-center justify-center" style="padding: var(--spacing-8) var(--spacing-4);">
+  <div class="card signup-container">
+    <h3 style="text-align: center;">Sign up</h3>
+
+    <div style="height: var(--spacing-6);"></div>
+
+    <div class="input-wrapper">
+      <img class="icon icon-md input-icon-left" src="https://initnexus.github.io/Core/media/icons/user.png" alt="">
+      <input type="text" id="signup-username" class="input" placeholder="Username">
+    </div>
+
+    <div style="height: var(--spacing-3);"></div>
+
+    <div class="input-wrapper">
+      <img class="icon icon-md input-icon-left" src="https://initnexus.github.io/Core/media/icons/email.png" alt="">
+      <input type="email" id="signup-email" class="input" placeholder="Email address">
+    </div>
+
+    <div style="height: var(--spacing-3);"></div>
+
+    <div class="input-wrapper">
+      <img class="icon icon-md input-icon-left" src="https://initnexus.github.io/Core/media/icons/key.png" alt="">
+      <input type="text" id="signup-passkey" class="input" placeholder="Passkey">
+    </div>
+
+    <div style="height: var(--spacing-3);"></div>
+
+    <div class="input-wrapper">
+      <img class="icon icon-md input-icon-left" src="https://initnexus.github.io/Core/media/icons/lock.png" alt="">
+      <input type="password" id="signup-password" class="input" placeholder="Password">
+    </div>
+
+    <div style="height: var(--spacing-3);"></div>
+
+    <div class="input-wrapper">
+      <img class="icon icon-md input-icon-left" src="https://initnexus.github.io/Core/media/icons/lock.png" alt="">
+      <input type="password" id="signup-repeat-password" class="input" placeholder="Repeat password">
+    </div>
+
+    <div style="height: var(--spacing-6);"></div>
+
+    <button type="button" id="signup-submit" class="btn btn-outline" style="width: 100%;" disabled>
+      <span id="signup-submit-text">Create account</span>
+      <span class="spinner spinner-md" id="signup-spinner" style="display: none;"></span>
+    </button>
+  </div>
+</main>
+
+<script>
+var signupInputs = [
+  document.getElementById('signup-username'),
+  document.getElementById('signup-email'),
+  document.getElementById('signup-passkey'),
+  document.getElementById('signup-password'),
+  document.getElementById('signup-repeat-password')
+];
+var signupButton = document.getElementById('signup-submit');
+var signupText = document.getElementById('signup-submit-text');
+var signupSpinner = document.getElementById('signup-spinner');
+
+function checkSignupFields() {
+  var allFilled = signupInputs.every(function (input) {
+    return input.value.trim().length > 0;
+  });
+  signupButton.disabled = !allFilled;
+}
+
+signupInputs.forEach(function (input) {
+  input.addEventListener('input', checkSignupFields);
+});
+
+signupButton.addEventListener('click', function () {
+  if (signupButton.disabled) {
+    return;
+  }
+  signupText.style.display = 'none';
+  signupSpinner.style.display = 'inline-flex';
+  signupButton.disabled = true;
+  setTimeout(function () {
+    window.location.href = 'https://initnexus.github.io/UtilityTok/main/account/login.html';
+  }, 3000);
+});
+</script>
+
+<script src="https://initnexus.github.io/Core/scripts/core.js"></script>
+</body>
+</html>

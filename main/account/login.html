@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="midnight">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+<link rel="icon" type="image/png" href="https://initnexus.github.io/Core/media/branding/logo.png">
+<link id="nb-theme-stylesheet" rel="stylesheet" href="https://initnexus.github.io/Core/styling/themes/midnight.css">
+<link rel="stylesheet" href="https://initnexus.github.io/Core/styling/core.css">
+<style>
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+*:focus {
+  outline: none;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 460px;
+}
+
+.login-social {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-3);
+}
+
+.login-social-tile {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface-raised);
+  text-decoration: none;
+  transition: background-color 200ms ease;
+}
+
+.login-social-tile:hover {
+  background-color: var(--color-surface-hover);
+}
+</style>
+</head>
+<body class="flex flex-col min-h-dvh">
+
+<main class="flex-1 flex items-center justify-center" style="padding: var(--spacing-8) var(--spacing-4);">
+  <div class="card login-container">
+    <h3 style="text-align: center;">Login</h3>
+
+    <div style="height: var(--spacing-6);"></div>
+
+    <div class="input-wrapper">
+      <img class="icon icon-md input-icon-left" src="https://initnexus.github.io/Core/media/icons/user.png" alt="">
+      <input type="text" class="input" placeholder="Email address or username">
+    </div>
+
+    <div style="height: var(--spacing-3);"></div>
+
+    <div class="input-wrapper">
+      <img class="icon icon-md input-icon-left" src="https://initnexus.github.io/Core/media/icons/lock.png" alt="">
+      <input type="password" class="input" placeholder="Password or passkey">
+    </div>
+
+    <div style="height: var(--spacing-6);"></div>
+
+    <div style="display: flex; align-items: center; justify-content: space-between;">
+      <label class="radio-wrapper">
+        <input type="radio" name="remember">
+        <span class="radio-dot"></span>
+        <span>Remember me</span>
+      </label>
+      <a href="https://initnexus.github.io/UtilityTok/main/account/recovery.html">Forgot password?</a>
+    </div>
+
+    <div style="height: var(--spacing-6);"></div>
+
+    <button type="button" class="btn btn-primary" style="width: 100%;">Login</button>
+
+    <div style="height: var(--spacing-3);"></div>
+
+    <a href="https://initnexus.github.io/UtilityTok/main/home.html" class="btn btn-outline" style="width: 100%;">Guest</a>
+
+    <div style="height: var(--spacing-6);"></div>
+
+    <p class="text-secondary" style="text-align: center;">Or continue with</p>
+
+    <div style="height: var(--spacing-4);"></div>
+
+    <div class="login-social">
+      <a class="login-social-tile" href="https://initnexus.github.io/UtilityTok/main/account/oauth/google.html">
+        <img class="icon icon-md" src="https://initnexus.github.io/Core/media/icons/google.png" alt="Google">
+      </a>
+      <a class="login-social-tile" href="https://initnexus.github.io/UtilityTok/main/account/oauth/apple.html">
+        <img class="icon icon-md" src="https://initnexus.github.io/Core/media/icons/microsoft.png" alt="Microsoft">
+      </a>
+      <a class="login-social-tile" href="https://initnexus.github.io/UtilityTok/main/account/oauth/discord.html">
+        <img class="icon icon-md" src="https://initnexus.github.io/Core/media/icons/facebook.png" alt="Facebook">
+      </a>
+      <a class="login-social-tile" href="https://initnexus.github.io/UtilityTok/main/account/oauth/github.html">
+        <img class="icon icon-md" src="https://initnexus.github.io/Core/media/icons/x.png" alt="X">
+      </a>
+      <a class="login-social-tile" href="https://initnexus.github.io/UtilityTok/main/account/oauth/microsoft.html">
+        <img class="icon icon-md" src="https://initnexus.github.io/Core/media/icons/github.png" alt="GitHub">
+      </a>
+    </div>
+  </div>
+</main>
+
+<script src="https://initnexus.github.io/Core/scripts/core.js"></script>
+</body>
+</html>

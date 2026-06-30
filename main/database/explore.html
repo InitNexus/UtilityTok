@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="midnight">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Explore Database</title>
+<link rel="icon" type="image/png" href="https://initnexus.github.io/Core/media/branding/logo.png">
+<link id="nb-theme-stylesheet" rel="stylesheet" href="https://initnexus.github.io/Core/styling/themes/midnight.css">
+<link rel="stylesheet" href="https://initnexus.github.io/Core/styling/core.css">
+<style>
+.nav-center {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+@media (min-width: 641px) {
+  .nav-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 640px) {
+  .navbar-brand {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  footer.border-t {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  footer.border-t .cluster {
+    margin-top: var(--spacing-3);
+  }
+}
+
+#menu-sheet,
+#shop-sheet {
+  border-radius: 10px 10px 0 0;
+  min-height: 280px;
+  transition: transform 350ms ease-out;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-overflow-scrolling: touch;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+*:focus {
+  outline: none;
+}
+
+a, button, .icon-container, .menu-row {
+  transition: background-color 200ms ease, transform 200ms ease, opacity 200ms ease;
+}
+
+.nav-center a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+}
+
+.nav-center a:hover {
+  background-color: var(--color-surface-raised);
+}
+
+.navbar-actions .icon-container:hover {
+  background-color: var(--color-surface-hover);
+}
+
+.menu-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 16px;
+  box-sizing: border-box;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 150ms ease;
+}
+
+.menu-section .menu-row {
+  margin: 0;
+}
+
+.menu-row:hover {
+  background-color: var(--color-surface-raised);
+  border-radius: 10px;
+}
+
+.menu-row .row-chevron {
+  margin-left: auto;
+}
+
+.menu-section {
+  background-color: var(--color-bg);
+  border-radius: 10px;
+  margin: 0 8px 16px 8px;
+  padding: 12px 8px;
+}
+</style>
+</head>
+<body class="flex flex-col min-h-dvh">
+<nav class="navbar" style="position: relative;">
+  <a href="https://initnexus.github.io/UtilityTok" class="navbar-brand">UtilityTok</a>
+  <div class="nav-center">
+    <a href="https://initnexus.github.io/UtilityTok/main/home.html">
+      <img class="icon icon-lg" src="https://initnexus.github.io/Core/media/icons/home.png" alt="Home">
+    </a>
+    <a href="https://initnexus.github.io/UtilityTok/main/search.html">
+      <img class="icon icon-lg" src="https://initnexus.github.io/Core/media/icons/search.png" alt="Search">
+    </a>
+    <a href="javascript:void(0)" data-sheet-open="menu-sheet">
+      <img class="icon icon-lg" src="https://initnexus.github.io/Core/media/icons/menu.png" alt="Menu">
+    </a>
+  </div>
+  <div class="navbar-actions">
+    <div class="icon-container border" data-sheet-open="shop-sheet" style="cursor: pointer;">
+      <img class="icon icon-md" src="https://initnexus.github.io/Core/media/icons/shop.png" alt="Store">
+    </div>
+    <a class="icon-container border" href="https://initnexus.github.io/UtilityTok/main/account/login.html">
+      <img class="icon icon-md" src="https://initnexus.github.io/Core/media/icons/user.png" alt="Account">
+    </a>
+  </div>
+</nav>
+
+<div id="sheet-blur-overlay" style="position: fixed; inset: 0; z-index: 489; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); opacity: 0; pointer-events: none; transition: opacity 300ms ease;"></div>
+
+<div class="sheet sheet-bottom" id="menu-sheet">
+  <div class="sheet-handle" data-sheet-close></div>
+  <div class="sheet-body" style="padding: 0;">
+
+    <a href="https://initnexus.github.io/UtilityTok/main/database/explore.html" class="menu-row" style="margin-top: 8px;">
+      <img class="icon icon-md" src="https://initnexus.github.io/Core/media/icons/database.png" alt="">
+      <span class="weight-bold">Database</span>
+      <span class="list-item-chevron row-chevron"></span>
+    </a>
+
+    <a href="https://initnexus.github.io/UtilityTok/main/ai.html" class="menu-row" style="margin-bottom: 16px;">
+      <img class="icon icon-md" src="https://initnexus.github.io/Core/media/icons/box.png" alt="">
+      <span class="weight-bold">AI</span>
+      <span class="list-item-chevron row-chevron"></span>
+    </a>
+
+    <div class="menu-section">
+      <div class="text-label" style="margin-bottom: 8px; padding-left: 8px;">Tools</div>
+      <a href="https://initnexus.github.io/UtilityTok/main/tools/analysis.html" class="menu-row">
+        <img class="icon icon-md" src="https://initnexus.github.io/Core/media/icons/graph.png" alt="">
+        <span class="weight-bold">Analysis</span>
+        <span class="list-item-chevron row-chevron"></span>
+      </a>
+      <a href="https://initnexus.github.io/UtilityTok/main/tools/viewer.html" class="menu-row">
+        <img class="icon icon-md" src="https://initnexus.github.io/Core/media/icons/eye.png" alt="">
+        <span class="weight-bold">Viewer</span>
+        <span class="list-item-chevron row-chevron"></span>
+      </a>
+      <a href="https://initnexus.github.io/UtilityTok/main/tools/information.html" class="menu-row">
+        <img class="icon icon-md" src="https://initnexus.github.io/Core/media/icons/information.png" alt="">
+        <span class="weight-bold">Information</span>
+        <span class="list-item-chevron row-chevron"></span>
+      </a>
+      <a href="https://initnexus.github.io/UtilityTok/main/tools/tracker.html" class="menu-row">
+        <img class="icon icon-md" src="https://initnexus.github.io/Core/media/icons/target.png" alt="">
+        <span class="weight-bold">Tracker</span>
+        <span class="list-item-chevron row-chevron"></span>
+      </a>
+      <a href="https://initnexus.github.io/UtilityTok/main/tools/creator.html" class="menu-row">
+        <img class="icon icon-md" src="https://initnexus.github.io/Core/media/icons/plus.png" alt="">
+        <span class="weight-bold">Creator</span>
+        <span class="list-item-chevron row-chevron"></span>
+      </a>
+      <a href="https://initnexus.github.io/UtilityTok/main/tools/miscellaneous.html" class="menu-row">
+        <img class="icon icon-md" src="https://initnexus.github.io/Core/media/icons/more.png" alt="">
+        <span class="weight-bold">Miscellaneous</span>
+        <span class="list-item-chevron row-chevron"></span>
+      </a>
+    </div>
+
+    <div class="menu-section">
+      <div class="text-label" style="margin-bottom: 8px; padding-left: 8px;">Information</div>
+      <a href="https://initnexus.github.io/UtilityTok/main/information/about.html" class="menu-row">
+        <img class="icon icon-md" src="https://initnexus.github.io/Core/media/icons/list.png" alt="">
+        <span class="weight-bold">About</span>
+        <span class="list-item-chevron row-chevron"></span>
+      </a>
+      <a href="https://initnexus.github.io/UtilityTok/main/information/reviews.html" class="menu-row">
+        <img class="icon icon-md" src="https://initnexus.github.io/Core/media/icons/star.png" alt="">
+        <span class="weight-bold">Reviews</span>
+        <span class="list-item-chevron row-chevron"></span>
+      </a>
+      <a href="https://initnexus.github.io/UtilityTok/main/information/contact.html" class="menu-row">
+        <img class="icon icon-md" src="https://initnexus.github.io/Core/media/icons/email.png" alt="">
+        <span class="weight-bold">Contact</span>
+        <span class="list-item-chevron row-chevron"></span>
+      </a>
+    </div>
+
+    <a href="https://initnexus.github.io/UtilityTok/main/download.html" class="menu-row">
+      <img class="icon icon-md" src="https://initnexus.github.io/Core/media/icons/download.png" alt="">
+      <span class="weight-bold">Download</span>
+      <span class="list-item-chevron row-chevron"></span>
+    </a>
+    <a href="https://initnexus.github.io/UtilityTok/main/management/settings.html" class="menu-row">
+      <img class="icon icon-md" src="https://initnexus.github.io/Core/media/icons/settings.png" alt="">
+      <span class="weight-bold">Settings</span>
+      <span class="list-item-chevron row-chevron"></span>
+    </a>
+
+  </div>
+</div>
+
+<div class="sheet sheet-bottom" id="shop-sheet">
+  <div class="sheet-handle" data-sheet-close></div>
+  <div class="sheet-body">
+
+    <a href="https://initnexus.github.io/UtilityTok/main/store/subscriptions.html" class="menu-row" style="margin-top: 8px;">
+      <img class="icon icon-md" src="https://initnexus.github.io/Core/media/icons/crown.png" alt="">
+      <span class="weight-bold">Subscriptions</span>
+      <span class="list-item-chevron row-chevron"></span>
+    </a>
+
+    <a href="https://initnexus.github.io/UtilityTok/main/store/sources.html" class="menu-row" style="margin-top: 8px;">
+      <img class="icon icon-md" src="https://initnexus.github.io/Core/media/icons/code.png" alt="">
+      <span class="weight-bold">Sources</span>
+      <span class="list-item-chevron row-chevron"></span>
+    </a>
+
+    <a href="https://initnexus.github.io/UtilityTok/main/store/services.html" class="menu-row" style="margin-top: 8px;">
+      <img class="icon icon-md" src="https://initnexus.github.io/Core/media/icons/bolt.png" alt="">
+      <span class="weight-bold">Services</span>
+      <span class="list-item-chevron row-chevron"></span>
+    </a>
+
+  </div>
+</div>
+
+<script>
+document.addEventListener('click', function (e) {
+  var overlay = document.getElementById('sheet-blur-overlay');
+  if (e.target.closest('[data-sheet-open]')) {
+    overlay.style.opacity = '1';
+    overlay.style.pointerEvents = 'auto';
+  } else if (e.target.closest('[data-sheet-close]') || e.target === overlay) {
+    overlay.style.opacity = '0';
+    overlay.style.pointerEvents = 'none';
+    document.querySelectorAll('.sheet.open').forEach(function (s) {
+      s.classList.remove('open');
+    });
+  }
+});
+</script>
+
+<main class="flex-1 flex flex-col border" style="margin: var(--spacing-3); padding: var(--spacing-6); background-color: rgba(0, 0, 0, 0.18); border-radius: 10px;">
+
+  <a href="https://initnexus.github.io/UtilityTok/main/database/king.alpha2636/analysis.html" class="border" style="display: flex; align-items: center; gap: var(--spacing-3); text-decoration: none; color: inherit; width: 100%; box-sizing: border-box; border-radius: 10px; padding: var(--spacing-3);">
+    <div style="width: 48px; height: 48px; flex-shrink: 0; border-radius: 10px; background-image: url('https://initnexus.github.io/UtilityTok/main/database/king.alpha2636/avatar.png'); background-size: cover; background-position: center;"></div>
+    <div style="flex: 1;">
+      <p class="weight-bold" style="margin: 0;">KING ALPHA 👑</p>
+      <p class="text-secondary" style="margin: 0; font-size: var(--text-sm);">king.alpha2636</p>
+    </div>
+    <span class="list-item-chevron"></span>
+  </a>
+
+</main>
+<footer class="border-t p-6 flex items-center justify-between">
+  <div>
+    <span>© UtilityTok 2026, by</span>
+    <a href="https://github.com/initnexus">NexusByte Initiative</a>
+  </div>
+  <div class="cluster">
+    <a href="https://github.com/initnexus/Core/information/documentation">Documentation</a>
+    <a href="https://initnexus.github.io/Portal">Contact</a>
+  </div>
+</footer>
+<script src="https://initnexus.github.io/Core/scripts/core.js"></script>
+</body>
+</html>
