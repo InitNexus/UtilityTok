@@ -268,7 +268,71 @@ document.addEventListener('click', function (e) {
 });
 </script>
 
-<main class="flex-1">
+<main class="flex-1 flex flex-col border" style="margin: var(--spacing-3); padding: var(--spacing-6); background-color: rgba(0, 0, 0, 0.18); border-radius: 10px;">
+
+  <div style="text-align: center;">
+    <h3>UtilityTok subscriptions</h3>
+  </div>
+
+  <div style="height: var(--spacing-6);"></div>
+
+  <div style="display: flex; flex-direction: column; gap: var(--spacing-3);">
+
+    <div style="display: flex; align-items: center; justify-content: space-between; padding: var(--spacing-3) var(--spacing-4); border: 1px solid var(--color-border); border-radius: 10px;">
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-1);">
+        <span class="weight-bold">Bronze</span>
+        <span style="font-size: var(--text-sm); color: var(--color-text-secondary);">Access to everything except for advanced analysis, all viewers, login information lookup and all endpoints with a 1,500 usage limit per day</span>
+      </div>
+      <span style="font-size: var(--text-sm); color: var(--color-text-secondary);">£4</span>
+    </div>
+
+    <div style="display: flex; align-items: center; justify-content: space-between; padding: var(--spacing-3) var(--spacing-4); border: 1px solid var(--color-border); border-radius: 10px;">
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-1);">
+        <span class="weight-bold">Silver</span>
+        <span style="font-size: var(--text-sm); color: var(--color-text-secondary);">Access to everything except for all viewers, login information lookup and all endpoints with a 2,500 usage limit per day</span>
+      </div>
+      <span style="font-size: var(--text-sm); color: var(--color-text-secondary);">£8</span>
+    </div>
+
+    <div style="display: flex; align-items: center; justify-content: space-between; padding: var(--spacing-3) var(--spacing-4); border: 1px solid var(--color-border); border-radius: 10px;">
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-1);">
+        <span class="weight-bold">Gold</span>
+        <span style="font-size: var(--text-sm); color: var(--color-text-secondary);">Access to everything except for login information lookup and all endpoints with a 4,000 usage limit per day</span>
+      </div>
+      <span style="font-size: var(--text-sm); color: var(--color-text-secondary);">£14</span>
+    </div>
+
+    <div style="display: flex; align-items: center; justify-content: space-between; padding: var(--spacing-3) var(--spacing-4); border: 1px solid var(--color-border); border-radius: 10px;">
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-1);">
+        <span class="weight-bold">Diamond</span>
+        <span style="font-size: var(--text-sm); color: var(--color-text-secondary);">Access to everything except for all endpoints with a 5,000 usage limit per day</span>
+      </div>
+      <span style="font-size: var(--text-sm); color: var(--color-text-secondary);">£18</span>
+    </div>
+
+    <div style="display: flex; align-items: center; justify-content: space-between; padding: var(--spacing-3) var(--spacing-4); border: 1px solid var(--color-border); border-radius: 10px;">
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-1);">
+        <span class="weight-bold">Platinum</span>
+        <span style="font-size: var(--text-sm); color: var(--color-text-secondary);">Access to all tools and all endpoints with no daily usage limit</span>
+      </div>
+      <span style="font-size: var(--text-sm); color: var(--color-text-secondary);">£25</span>
+    </div>
+
+    <div style="display: flex; align-items: center; justify-content: space-between; padding: var(--spacing-3) var(--spacing-4); border: 1px solid var(--color-border); border-radius: 10px;">
+      <div style="display: flex; flex-direction: column; gap: var(--spacing-1);">
+        <span class="weight-bold">Lifetime</span>
+        <span style="font-size: var(--text-sm); color: var(--color-text-secondary);">Access to all tools, all endpoints and the 24/7 updated database with no usage limit</span>
+      </div>
+      <span style="font-size: var(--text-sm); color: var(--color-text-secondary);">£35</span>
+    </div>
+
+  </div>
+
+  <div style="height: var(--spacing-4);"></div>
+  <button type="button" class="btn btn-primary" style="width: 100%;" onclick="window.location.href='#'">Purchase a subscription</button>
+  <div style="height: var(--spacing-4);"></div>
+  <p class="text-secondary" style="text-align: center;">All plans (except for lifetime) last for exactly 30 days before expiring.</p>
+
 </main>
 <footer class="border-t p-6 flex items-center justify-between">
   <div>
