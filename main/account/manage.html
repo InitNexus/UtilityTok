@@ -116,6 +116,42 @@ a, button, .icon-container, .menu-row {
   margin: 0 8px 16px 8px;
   padding: 12px 8px;
 }
+
+.manage-hero {
+  position: relative;
+  width: 100%;
+  height: 120px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #1c1424, #c4aaf5);
+  box-sizing: border-box;
+}
+
+.manage-avatar-wrapper {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 50%);
+  width: 88px;
+  height: 88px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-border-strong);
+  background-color: #1c1424;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.manage-inner-body {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.manage-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-2) 0;
+}
 </style>
 </head>
 <body class="flex flex-col min-h-dvh">
@@ -268,7 +304,45 @@ document.addEventListener('click', function (e) {
 });
 </script>
 
-<main class="flex-1">
+<main class="flex-1 flex flex-col border" style="margin: var(--spacing-3); padding: var(--spacing-6); background-color: rgba(0, 0, 0, 0.18); border-radius: 10px;">
+
+  <div class="manage-hero">
+    <div class="manage-avatar-wrapper">
+      <img class="icon icon-xl" src="https://initnexus.github.io/Core/media/icons/image.png" alt="">
+    </div>
+  </div>
+
+  <div style="height: var(--spacing-10);"></div>
+
+  <div class="manage-inner-body">
+    <span class="weight-bold">Account information</span>
+    <div style="height: var(--spacing-4);"></div>
+
+    <div class="manage-row">
+      <span>Username</span>
+      <span class="text-secondary" style="font-size: var(--text-sm);">Unknown</span>
+    </div>
+    <div class="manage-row">
+      <span>Email address</span>
+      <span class="text-secondary" style="font-size: var(--text-sm);">Unknown</span>
+    </div>
+    <div class="manage-row">
+      <span>Password</span>
+      <span class="text-secondary" style="font-size: var(--text-sm);">Unknown</span>
+    </div>
+    <div class="manage-row">
+      <span>Passkey</span>
+      <span class="text-secondary" style="font-size: var(--text-sm);">Unknown</span>
+    </div>
+    <div class="manage-row">
+      <span>Subscription</span>
+      <span class="text-secondary" style="font-size: var(--text-sm);">Unknown</span>
+    </div>
+
+    <div style="height: var(--spacing-4);"></div>
+    <button type="button" class="btn btn-secondary" disabled style="width: 100%;">Edit account</button>
+  </div>
+
 </main>
 <footer class="border-t p-6 flex items-center justify-between">
   <div>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="midnight">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Account Recovery</title>
+<link rel="icon" type="image/png" href="https://initnexus.github.io/Core/media/branding/logo.png">
+<link id="nb-theme-stylesheet" rel="stylesheet" href="https://initnexus.github.io/Core/styling/themes/midnight.css">
+<link rel="stylesheet" href="https://initnexus.github.io/Core/styling/core.css">
+<style>
+html {
+  scroll-behavior: smooth;
+}
+body {
+  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
+}
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+*:focus {
+  outline: none;
+}
+.recovery-container {
+  width: 100%;
+  max-width: 460px;
+}
+.recovery-resend {
+  display: none;
+  text-align: center;
+  color: var(--color-text-secondary);
+  font-size: var(--text-sm);
+}
+</style>
+</head>
+<body class="flex flex-col min-h-dvh">
+<main class="flex-1 flex items-center justify-center" style="padding: var(--spacing-8) var(--spacing-4);">
+  <div class="card recovery-container">
+    <h3 style="text-align: center;">Account recovery</h3>
+    <div style="height: var(--spacing-6);"></div>
+    <div class="input-wrapper">
+      <img class="icon icon-md input-icon-left" src="https://initnexus.github.io/Core/media/icons/email.png" alt="">
+      <input type="email" class="input" id="recovery-email" placeholder="Your email address">
+    </div>
+    <div style="height: var(--spacing-4);"></div>
+    <button type="button" class="btn btn-primary" id="recovery-send-btn" style="width: 100%;">Send recovery link</button>
+    <div style="height: var(--spacing-3);"></div>
+    <p class="recovery-resend" id="recovery-resend-text">Send link again in <span id="recovery-countdown">2:00</span></p>
+  </div>
+</main>
+<script src="https://initnexus.github.io/Core/scripts/core.js"></script>
+<script>
+var recoveryBtn = document.getElementById('recovery-send-btn');
+var recoveryResendText = document.getElementById('recovery-resend-text');
+var recoveryCountdown = document.getElementById('recovery-countdown');
+var recoveryTimer = null;
+
+recoveryBtn.addEventListener('click', function () {
+  if (recoveryBtn.disabled) {
+    return;
+  }
+
+  var secondsLeft = 120;
+  recoveryBtn.disabled = true;
+  recoveryResendText.style.display = 'block';
+  recoveryCountdown.textContent = '2:00';
+
+  recoveryTimer = setInterval(function () {
+    secondsLeft -= 1;
+
+    if (secondsLeft <= 0) {
+      clearInterval(recoveryTimer);
+      recoveryResendText.style.display = 'none';
+      recoveryBtn.disabled = false;
+      return;
+    }
+
+    var minutes = Math.floor(secondsLeft / 60);
+    var seconds = secondsLeft % 60;
+    recoveryCountdown.textContent = minutes + ':' + String(seconds).padStart(2, '0');
+  }, 1000);
+});
+</script>
+</body>
+</html>
