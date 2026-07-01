@@ -110,11 +110,36 @@ a, button, .icon-container, .menu-row {
   margin-left: auto;
 }
 
-.menu-section {
-  background-color: var(--color-bg);
+.pref-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-3) var(--spacing-4);
+  border: 1px solid var(--color-border);
   border-radius: 10px;
-  margin: 0 8px 16px 8px;
-  padding: 12px 8px;
+  cursor: pointer;
+  transition: background-color 150ms ease;
+}
+.pref-bar:hover {
+  background-color: var(--color-surface-raised);
+}
+.pref-sheet {
+  border-radius: 10px 10px 0 0;
+}
+.pref-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-3) var(--spacing-4);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 150ms ease;
+}
+.pref-option:hover {
+  background-color: var(--color-surface-raised);
+}
+.pref-option .radio-wrapper {
+  pointer-events: none;
 }
 </style>
 </head>
@@ -252,6 +277,80 @@ a, button, .icon-container, .menu-row {
   </div>
 </div>
 
+<div class="sheet sheet-bottom pref-sheet" id="theme-sheet">
+  <div class="sheet-handle" data-sheet-close></div>
+  <div class="sheet-body" style="display: flex; flex-direction: column; gap: var(--spacing-1);">
+    <div class="pref-option" data-group="theme" data-value="Light">
+      <span>Light</span>
+      <label class="radio-wrapper"><input type="radio" name="theme-radio" value="Light"><span class="radio-dot"></span></label>
+    </div>
+    <div class="pref-option" data-group="theme" data-value="Dark">
+      <span>Dark</span>
+      <label class="radio-wrapper"><input type="radio" name="theme-radio" value="Dark"><span class="radio-dot"></span></label>
+    </div>
+    <div class="pref-option" data-group="theme" data-value="Midnight">
+      <span>Midnight</span>
+      <label class="radio-wrapper"><input type="radio" name="theme-radio" value="Midnight"><span class="radio-dot"></span></label>
+    </div>
+    <div class="pref-option" data-group="theme" data-value="Amoled">
+      <span>Amoled</span>
+      <label class="radio-wrapper"><input type="radio" name="theme-radio" value="Amoled"><span class="radio-dot"></span></label>
+    </div>
+  </div>
+</div>
+
+<div class="sheet sheet-bottom pref-sheet" id="language-sheet">
+  <div class="sheet-handle" data-sheet-close></div>
+  <div class="sheet-body" style="display: flex; flex-direction: column; gap: var(--spacing-1);">
+    <div class="pref-option" data-group="language" data-value="English">
+      <span>English</span>
+      <label class="radio-wrapper"><input type="radio" name="language-radio" value="English"><span class="radio-dot"></span></label>
+    </div>
+    <div class="pref-option" data-group="language" data-value="French">
+      <span>French</span>
+      <label class="radio-wrapper"><input type="radio" name="language-radio" value="French"><span class="radio-dot"></span></label>
+    </div>
+    <div class="pref-option" data-group="language" data-value="Spanish">
+      <span>Spanish</span>
+      <label class="radio-wrapper"><input type="radio" name="language-radio" value="Spanish"><span class="radio-dot"></span></label>
+    </div>
+    <div class="pref-option" data-group="language" data-value="German">
+      <span>German</span>
+      <label class="radio-wrapper"><input type="radio" name="language-radio" value="German"><span class="radio-dot"></span></label>
+    </div>
+    <div class="pref-option" data-group="language" data-value="Russian">
+      <span>Russian</span>
+      <label class="radio-wrapper"><input type="radio" name="language-radio" value="Russian"><span class="radio-dot"></span></label>
+    </div>
+    <div class="pref-option" data-group="language" data-value="Portuguese">
+      <span>Portuguese</span>
+      <label class="radio-wrapper"><input type="radio" name="language-radio" value="Portuguese"><span class="radio-dot"></span></label>
+    </div>
+    <div class="pref-option" data-group="language" data-value="Chinese">
+      <span>Chinese</span>
+      <label class="radio-wrapper"><input type="radio" name="language-radio" value="Chinese"><span class="radio-dot"></span></label>
+    </div>
+    <div class="pref-option" data-group="language" data-value="Japanese">
+      <span>Japanese</span>
+      <label class="radio-wrapper"><input type="radio" name="language-radio" value="Japanese"><span class="radio-dot"></span></label>
+    </div>
+  </div>
+</div>
+
+<div class="sheet sheet-bottom pref-sheet" id="cookies-sheet">
+  <div class="sheet-handle" data-sheet-close></div>
+  <div class="sheet-body" style="display: flex; flex-direction: column; gap: var(--spacing-1);">
+    <div class="pref-option" data-group="cookies" data-value="Accept">
+      <span>Accept</span>
+      <label class="radio-wrapper"><input type="radio" name="cookies-radio" value="Accept"><span class="radio-dot"></span></label>
+    </div>
+    <div class="pref-option" data-group="cookies" data-value="Decline">
+      <span>Decline</span>
+      <label class="radio-wrapper"><input type="radio" name="cookies-radio" value="Decline"><span class="radio-dot"></span></label>
+    </div>
+  </div>
+</div>
+
 <script>
 document.addEventListener('click', function (e) {
   var overlay = document.getElementById('sheet-blur-overlay');
@@ -265,10 +364,67 @@ document.addEventListener('click', function (e) {
       s.classList.remove('open');
     });
   }
+
+  var option = e.target.closest('.pref-option');
+  if (option) {
+    var group = option.dataset.group;
+    var value = option.dataset.value;
+
+    var radio = option.querySelector('input[type="radio"]');
+    if (radio) {
+      radio.checked = true;
+    }
+
+    var label = document.getElementById(group + '-label');
+    if (label) {
+      label.textContent = value;
+    }
+
+    var sheet = document.getElementById(group + '-sheet');
+    if (sheet) {
+      sheet.classList.remove('open');
+    }
+
+    overlay.style.opacity = '0';
+    overlay.style.pointerEvents = 'none';
+  }
+});
+
+document.getElementById('save-prefs-btn').addEventListener('click', function () {
 });
 </script>
 
-<main class="flex-1">
+<main class="flex-1 flex flex-col border" style="margin: var(--spacing-3); padding: var(--spacing-6); background-color: rgba(0, 0, 0, 0.18); border-radius: 10px;">
+
+  <div style="text-align: center;">
+    <h3>Settings</h3>
+    <p class="text-secondary">Configure your preferences</p>
+  </div>
+
+  <div style="height: var(--spacing-6);"></div>
+
+  <div style="display: flex; flex-direction: column; gap: var(--spacing-3);">
+
+    <div class="pref-bar" data-sheet-open="theme-sheet">
+      <span class="weight-bold" id="theme-label">Theme</span>
+      <span class="list-item-chevron"></span>
+    </div>
+
+    <div class="pref-bar" data-sheet-open="language-sheet">
+      <span class="weight-bold" id="language-label">Language</span>
+      <span class="list-item-chevron"></span>
+    </div>
+
+    <div class="pref-bar" data-sheet-open="cookies-sheet">
+      <span class="weight-bold" id="cookies-label">Cookies</span>
+      <span class="list-item-chevron"></span>
+    </div>
+
+  </div>
+
+  <div style="height: var(--spacing-6);"></div>
+  <button type="button" class="btn btn-primary" style="width: 100%;" id="save-prefs-btn">Save preferences</button>
+
 </main>
 <footer class="border-t p-6 flex items-center justify-between">
   <div>
