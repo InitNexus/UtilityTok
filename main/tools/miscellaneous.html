@@ -110,11 +110,20 @@ a, button, .icon-container, .menu-row {
   margin-left: auto;
 }
 
-.menu-section {
-  background-color: var(--color-bg);
+.viewer-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-3) var(--spacing-4);
   border-radius: 10px;
-  margin: 0 8px 16px 8px;
-  padding: 12px 8px;
+  cursor: pointer;
+  transition: background-color 150ms ease;
+}
+.viewer-option:hover {
+  background-color: var(--color-surface-raised);
+}
+.viewer-option .radio-wrapper {
+  pointer-events: none;
 }
 </style>
 </head>
@@ -268,8 +277,63 @@ document.addEventListener('click', function (e) {
 });
 </script>
 
-<main class="flex-1">
+<div class="sheet sheet-bottom" id="misc-type-sheet" style="border-radius: 10px 10px 0 0;">
+  <div class="sheet-handle" data-sheet-close></div>
+  <div class="sheet-body" style="display: flex; flex-direction: column; gap: var(--spacing-1);">
+    <div class="viewer-option" data-value="Link shortener">
+      <span>Link shortener</span>
+      <label class="radio-wrapper"><input type="radio" name="misc-type-radio" value="Link shortener"><span class="radio-dot"></span></label>
+    </div>
+    <div class="viewer-option" data-value="Alternate account detector">
+      <span>Alternate account detector</span>
+      <label class="radio-wrapper"><input type="radio" name="misc-type-radio" value="Alternate account detector"><span class="radio-dot"></span></label>
+    </div>
+    <div class="viewer-option" data-value="Media downloader">
+      <span>Media downloader</span>
+      <label class="radio-wrapper"><input type="radio" name="misc-type-radio" value="Media downloader"><span class="radio-dot"></span></label>
+    </div>
+  </div>
+</div>
+
+<main class="flex-1 flex flex-col border" style="margin: var(--spacing-3); padding: var(--spacing-6); background-color: rgba(0, 0, 0, 0.18); border-radius: 10px;">
+
+  <div style="text-align: center;">
+    <h3>Miscellaneous tools</h3>
+    <p class="text-secondary">Shorten links, detect accounts & download all types of media</p>
+  </div>
+
+  <div style="height: var(--spacing-6);"></div>
+
+  <div style="display: flex; align-items: center; justify-content: space-between; padding: var(--spacing-3) var(--spacing-4); border: 1px solid var(--color-border); border-radius: 10px;">
+    <span class="weight-bold">Type:</span>
+    <div data-sheet-open="misc-type-sheet" style="display: flex; align-items: center; gap: var(--spacing-2); cursor: pointer;">
+      <span id="misc-type-label" style="font-size: var(--text-sm); color: var(--color-text-secondary);">Type</span>
+      <span class="accordion-icon"></span>
+    </div>
+  </div>
+
+  <div style="flex: 1;"></div>
+
 </main>
+
+<script>
+document.addEventListener('click', function (e) {
+  var overlay = document.getElementById('sheet-blur-overlay');
+
+  var option = e.target.closest('.viewer-option');
+  if (option) {
+    var value = option.dataset.value;
+    var radio = option.querySelector('input[type="radio"]');
+    if (radio) {
+      radio.checked = true;
+    }
+    document.getElementById('misc-type-label').textContent = value;
+    document.getElementById('misc-type-sheet').classList.remove('open');
+    overlay.style.opacity = '0';
+    overlay.style.pointerEvents = 'none';
+  }
+});
+</script>
 <footer class="border-t p-6 flex items-center justify-between">
   <div>
     <span>© UtilityTok 2026, by</span>

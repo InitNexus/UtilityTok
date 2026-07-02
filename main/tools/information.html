@@ -110,11 +110,31 @@ a, button, .icon-container, .menu-row {
   margin-left: auto;
 }
 
-.menu-section {
-  background-color: var(--color-bg);
+.analysis-tab-bar {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--color-border);
   border-radius: 10px;
-  margin: 0 8px 16px 8px;
-  padding: 12px 8px;
+  padding: var(--spacing-1);
+  gap: var(--spacing-1);
+}
+.analysis-tab {
+  flex: 1;
+  text-align: center;
+  padding: var(--spacing-2) var(--spacing-4);
+  cursor: pointer;
+  font-size: var(--text-sm);
+  border-radius: 10px;
+  transition: background-color 150ms ease, color 150ms ease;
+  color: var(--color-text-secondary);
+}
+.analysis-tab.active {
+  background-color: var(--color-accent);
+  color: var(--color-on-accent);
+  font-weight: bold;
+}
+.analysis-tab:not(.active):hover {
+  background-color: var(--color-surface-raised);
 }
 </style>
 </head>
@@ -268,8 +288,39 @@ document.addEventListener('click', function (e) {
 });
 </script>
 
-<main class="flex-1">
+<main class="flex-1 flex flex-col border" style="margin: var(--spacing-3); padding: var(--spacing-6); background-color: rgba(0, 0, 0, 0.18); border-radius: 10px;">
+
+  <div style="text-align: center;">
+    <h3>Information lookup</h3>
+    <p class="text-secondary">Get insights on login & domain information</p>
+  </div>
+
+  <div style="height: var(--spacing-6);"></div>
+
+  <div class="analysis-tab-bar">
+    <div class="analysis-tab active" id="tab-one" onclick="setTab('one')">Login information</div>
+    <div class="analysis-tab" id="tab-two" onclick="setTab('two')">Domain information</div>
+  </div>
+
+  <div style="height: var(--spacing-3);"></div>
+
+  <div class="input-wrapper">
+    <img class="icon icon-md input-icon-left" src="https://initnexus.github.io/Core/media/icons/search.png" alt="">
+    <input type="text" class="input" placeholder="Enter a username without the '@'...">
+  </div>
+
+  <div style="flex: 1; display: flex; align-items: center; justify-content: center;">
+    <p class="text-secondary">Results will be displayed here</p>
+  </div>
+
 </main>
+
+<script>
+function setTab(tab) {
+  document.getElementById('tab-one').classList.toggle('active', tab === 'one');
+  document.getElementById('tab-two').classList.toggle('active', tab === 'two');
+}
+</script>
 <footer class="border-t p-6 flex items-center justify-between">
   <div>
     <span>© UtilityTok 2026, by</span>
